@@ -80,7 +80,7 @@ products.forEach((product, index) => {
 
         <div class="card__actions">
           <button class="btn btn--primary" type="button">Ajouter</button>
-          <button class="btn btn--ghost" type="button">Détails</button>
+          <a href="product.html?product=${product.slug}" class="btn btn--ghost" type="button">Détails</a>
         </div>
       </div>
     </article>
@@ -117,4 +117,3 @@ addButtons.forEach((button, index) => {
         console.log(products[index].name);
     })
 })
-

@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Produit — Fake Boutique</title>
+  <link rel="stylesheet" href="styles/style__product.css" />
+  <script src="script__product.js" defer></script>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header__inner">
+      <a class="brand" href="index.html">
+        <span class="brand__logo">🛍️</span>
+        <span class="brand__name">Fake Boutique</span>
+      </a>
+
+      <nav class="nav">
+        <a href="index.html" class="nav__link">Shop</a>
+        <a href="#" class="nav__link">Nouveautés</a>
+        <a href="#" class="nav__link">Promos</a>
+        <a href="#" class="nav__link">Contact</a>
+      </nav>
+
+      <a class="cart-btn" href="index.html#cart">
+        Panier <span class="cart-badge">2</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="index.html" class="breadcrumb__link">Accueil</a>
+      <span class="breadcrumb__sep">/</span>
+      <a href="index.html" class="breadcrumb__link">Shop</a>
+      <span class="breadcrumb__sep">/</span>
+      <span class="breadcrumb__current">T-shirt Basic</span>
+    </nav>
+
+    <!-- Product layout -->
+    <section class="product">
+      <!-- Gallery -->
+      <div class="gallery">
+        <div class="gallery__main">
+          <img class="main-image" src="https://picsum.photos/seed/tshirt/900/700" alt="T-shirt Basic" />
+          <span class="tag">New</span>
+        </div>
+
+        <div class="gallery__thumbs" aria-label="Miniatures">
+          <button class="thumb is-active" type="button" aria-label="Vue 1">
+            <img  src="https://picsum.photos/seed/tshirt/160/120" alt="" />
+          </button>
+          <button class="thumb" type="button" aria-label="Vue 2">
+            <img src="https://picsum.photos/seed/tshirt2/160/120" alt="" />
+          </button>
+          <button class="thumb" type="button" aria-label="Vue 3">
+            <img src="https://picsum.photos/seed/tshirt3/160/120" alt="" />
+          </button>
+        </div>
+      </div>
+
+      <!-- Infos -->
+      <div class="info">
+        <div class="info__top">
+          <h1 class="title">T-shirt Basic</h1>
+          <p class="subtitle">Coton bio • Coupe regular • Ultra confortable</p>
+
+          <div class="rating" aria-label="Note produit">
+            <span class="stars">★★★★★</span>
+            <span class="muted">(128 avis)</span>
+          </div>
+        </div>
+
+        <div class="price-row">
+          <div class="price">
+            <span class="price__value">19,99 €</span>
+            <span class="price__hint muted">TTC</span>
+          </div>
+
+          <div class="stock">
+            <span class="dot" aria-hidden="true"></span>
+            <span><strong>En stock</strong> — 12 pièces</span>
+          </div>
+        </div>
+
+        <!-- Variants -->
+        <div class="variants">
+          <div class="variant">
+            <span class="variant__label">Taille</span>
+            <div class="segmented" role="group" aria-label="Taille">
+              <button class="seg is-active" type="button">S</button>
+              <button class="seg" type="button">M</button>
+              <button class="seg" type="button">L</button>
+              <button class="seg" type="button">XL</button>
+            </div>
+          </div>
+
+          <div class="variant">
+            <span class="variant__label">Couleur</span>
+            <div class="colors" role="group" aria-label="Couleur">
+              <button class="color is-active" type="button" aria-label="Noir">
+                <span class="swatch swatch--black"></span>
+              </button>
+              <button class="color" type="button" aria-label="Blanc">
+                <span class="swatch swatch--white"></span>
+              </button>
+              <button class="color" type="button" aria-label="Bleu">
+                <span class="swatch swatch--blue"></span>
+              </button>
+              <button class="color" type="button" aria-label="Vert">
+                <span class="swatch swatch--green"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta">
+          <div class="qty">
+            <button class="qty__btn" type="button" aria-label="Diminuer">-</button>
+            <span class="qty__value">1</span>
+            <button class="qty__btn" type="button" aria-label="Augmenter">+</button>
+          </div>
+
+          <button class="btn btn--primary" type="button">Ajouter au panier</button>
+          <button class="btn btn--ghost" type="button">Ajouter aux favoris</button>
+        </div>
+
+        <div class="benefits">
+          <div class="benefit">
+            <span class="benefit__icon">🚚</span>
+            <div>
+              <strong>Livraison rapide</strong>
+              <p class="muted">48–72h selon la zone.</p>
+            </div>
+          </div>
+          <div class="benefit">
+            <span class="benefit__icon">↩️</span>
+            <div>
+              <strong>Retour facile</strong>
+              <p class="muted">14 jours pour changer d’avis.</p>
+            </div>
+          </div>
+          <div class="benefit">
+            <span class="benefit__icon">🔒</span>
+            <div>
+              <strong>Paiement sécurisé</strong>
+              <p class="muted">Carte / PayPal.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Details tabs (static) -->
+        <div class="details">
+          <div class="tabs" role="tablist" aria-label="Détails produit">
+            <button class="tab is-active" type="button">Description</button>
+            <button class="tab" type="button">Composition</button>
+            <button class="tab" type="button">Livraison</button>
+          </div>
+
+          <div class="panel">
+            <p>
+              Un essentiel du dressing : coton bio doux, finitions propres,
+              parfait pour un look minimal. Coupe regular pour un confort max.
+            </p>
+            <ul class="list">
+              <li>Coupe : regular</li>
+              <li>Col : rond</li>
+              <li>Entretien : 30°C</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recommendations -->
+    <section class="reco">
+      <div class="reco__top">
+        <h2 class="reco__title">Tu pourrais aimer</h2>
+        <a class="link" href="index.html">Voir tout</a>
+      </div>
+
+      <div class="reco__grid">
+        <article class="mini-card">
+          <img src="https://picsum.photos/seed/hoodie/500/360" alt="Hoodie Oversize" />
+          <div class="mini-card__body">
+            <h3>Hoodie Oversize</h3>
+            <p class="muted">49,99 €</p>
+          </div>
+        </article>
+
+        <article class="mini-card">
+          <img src="https://picsum.photos/seed/jeans/500/360" alt="Jeans Regular" />
+          <div class="mini-card__body">
+            <h3>Jeans Regular</h3>
+            <p class="muted">59,99 €</p>
+          </div>
+        </article>
+
+        <article class="mini-card">
+          <img src="https://picsum.photos/seed/veste/500/360" alt="Veste légère" />
+          <div class="mini-card__body">
+            <h3>Veste légère</h3>
+            <p class="muted">79,99 €</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="muted">© Fake Boutique — Démo UI</p>
+      <div class="footer__links">
+        <a href="#" class="nav__link">CGV</a>
+        <a href="#" class="nav__link">Confidentialité</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
