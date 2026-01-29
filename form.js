@@ -1,0 +1,1 @@
+//! Créer un formulaire d'ajout de produit dans le storage.

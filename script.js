@@ -276,3 +276,5 @@ if (clearBtn) {
     renderCart();
   });
 }
+
+//! Faire fonctionner le panier via popup dans la page produits.
