@@ -79,7 +79,7 @@ products.forEach((product, index) => {
         </div>
 
         <div class="card__actions">
-          <button class="btn btn--primary" type="button">Ajouter</button>
+          <button class="btn btn--primary" type="button" data-id="${product.id}">Ajouter</button>
           <a href="product.html?product=${product.slug}" class="btn btn--ghost" type="button">Détails</a>
         </div>
       </div>
@@ -117,3 +117,162 @@ addButtons.forEach((button, index) => {
         console.log(products[index].name);
     })
 })
+
+//! Cart area
+
+//* 1) cart state
+let cart = JSON.parse(localStorage.getItem("cart") || "[]");   //? get cart from localStorage or init empty array
+
+// 2) add to cart (buttons on product cards)
+document.querySelectorAll(".btn--primary").forEach((btn) => {          //? select all "add to cart" buttons
+  btn.addEventListener("click", (e) => {                            //? add click listener
+    const id = Number(e.currentTarget.dataset.id);                  //? get product id from data-id attribute
+    const product = products.find((p) => p.id === id);              //? find product by id
+    if (!product) return;                                       //? iff product not found, exit
+
+    const line = cart.find((item) => item.id === id);                 //? check if product already in cart
+    if (line) line.qty += 1;                                         //? if found, increment qty
+    else cart.push({ id: product.id, name: product.name, price: product.price, image: product.image, qty: 1 });   //? if not, add new line
+
+    renderCart();
+  });
+});
+
+//* 3) render cart (display + totals + persist)
+function renderCart() {                                                
+  const itemsEl = document.querySelector(".cart__items");            //? cart items container
+  if (!itemsEl) return; 
+
+  // Items
+  if (cart.length === 0) {
+    itemsEl.innerHTML = `<p class="muted">Panier vide.</p>`;             
+  } else {
+    itemsEl.innerHTML = cart                                               
+      .map(
+        (it) => `
+        <div class="cart-item" data-id="${it.id}">
+          <img class="cart-item__img" src="${it.image}" alt="">
+          <div class="cart-item__info">
+            <div class="cart-item__top">
+              <strong>${it.name}</strong>
+              <span class="muted">${it.price.toFixed(2)} €</span>
+            </div>
+
+            <div class="cart-item__bottom">
+              <div class="qty">
+                <button class="qty__btn" type="button" data-action="dec">-</button>
+                <span class="qty__value">${it.qty}</span>
+                <button class="qty__btn" type="button" data-action="inc">+</button>
+              </div>
+              <button class="link-btn" type="button" data-action="remove">Supprimer</button>
+            </div>
+          </div>
+        </div>
+      `
+      )
+      .join("");                                        //? ajoute chaque ligne dans le container
+  }
+
+  // Totals (reduce = calcule une valeur unique depuis un tableau)
+  const totalQty = cart.reduce((sum, it) => sum + it.qty, 0);                      //? total quantity
+  const subtotal = cart.reduce((sum, it) => sum + it.price * it.qty, 0);           //? subtotal price
+
+  // UI totals (avec guards pour éviter "null")
+  const pillEl = document.querySelector(".pill");                                  //? cart pill element
+  if (pillEl) pillEl.textContent = `${totalQty} articles`;                        //? update pill text
+
+  const subtotalEl = document.querySelector(".cart__row strong");                 //? subtotal element
+  if (subtotalEl) subtotalEl.textContent = `${subtotal.toFixed(2)} €`;               //? update subtotal text
+
+  document.querySelectorAll(".cart-badge").forEach((b) => (b.textContent = totalQty));     //? update all cart badges
+ 
+  // Persist
+  localStorage.setItem("cart", JSON.stringify(cart));             //? save cart to localStorage
+}
+
+//* 4) + / - / remove via event delegation (1 seul listener)
+const cartItemsContainer = document.querySelector(".cart__items");            //? cart items container
+if (cartItemsContainer) {                                                     
+  cartItemsContainer.addEventListener("click", (event) => {                       //? listen for clicks
+    const actionBtn = event.target.closest("[data-action]");  // closest() remonte vers le bouton si clic sur un enfant
+    if (!actionBtn) return;
+
+    const action = actionBtn.dataset.action;                 //? get action (inc, dec, remove)
+
+    const cartItemEl = actionBtn.closest(".cart-item");          //? get cart item element
+
+    const id = Number(cartItemEl.dataset.id);                  //? get product id
+
+    const line = cart.find((it) => it.id === id);               //? find cart line
+    if (!line) return;
+
+    if (action === "inc") line.qty += 1;                       //? increment qty
+
+    if (action === "dec") {
+      line.qty -= 1;
+      if (line.qty <= 0) cart = cart.filter((it) => it.id !== id);          //? remove line if qty <= 0
+    }
+
+    if (action === "remove") {                                                //? remove line
+      cart = cart.filter((it) => it.id !== id);                               //? keep lines where id != id to remove
+    }
+                  //! how it work ? -> En résumé : data-action ((inner)HTML) → dataset.action (JS) → if (logique).
+    renderCart();
+  });
+}
+
+//? via splice()
+
+// const cartItemsContainer = document.querySelector(".cart__items"); // cart items container
+
+// if (cartItemsContainer) {
+//   cartItemsContainer.addEventListener("click", (event) => {
+//     const actionBtn = event.target.closest("[data-action]"); // remonte si clic sur un enfant
+//     if (!actionBtn) return;
+
+//     const action = actionBtn.dataset.action; // "inc" | "dec" | "remove"
+
+//     const cartItemEl = actionBtn.closest(".cart-item");
+//     if (!cartItemEl) return;
+
+//     const id = Number(cartItemEl.dataset.id);
+
+//     // Trouver l'index de la ligne dans cart (nécessaire pour splice)
+//     const index = cart.findIndex((it) => it.id === id);
+//     if (index === -1) return;
+
+//     if (action === "inc") {
+//       cart[index].qty += 1;
+//     }
+
+//     if (action === "dec") {
+//       cart[index].qty -= 1;
+//       if (cart[index].qty <= 0) {
+//         cart.splice(index, 1); // delete one element
+//       }
+//     }
+
+//     if (action === "remove") {
+//       cart.splice(index, 1); // direct cut
+//     }
+
+//     renderCart();
+//   });
+// }
+
+//* 5) init
+renderCart();
+
+//* 6) Clear cart button
+const clearBtn = document.querySelector("#btn-clear-cart"); 
+
+if (clearBtn) {
+  clearBtn.addEventListener("click", () => {
+    const ok = window.confirm("Vider le panier ?"); 
+    if (!ok) return;
+
+    cart = [];
+    localStorage.removeItem("cart"); // bybye localStorage key ♥
+    renderCart();
+  });
+}
