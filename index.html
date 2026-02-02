@@ -6,6 +6,8 @@
     <title>Fake Boutique</title>
     <link rel="stylesheet" href="styles/style.css" />
     <script src="script.js" defer></script>
+    <script src="auth-ui.js" defer></script>
+
   </head>
   <body>
     <!-- Header -->
@@ -21,7 +23,10 @@
           <a href="#" class="nav__link">Nouveautés</a>
           <a href="#" class="nav__link">Promos</a>
           <a href="#" class="nav__link">Contact</a>
-          <a class="btn btn--ghost" href="login.html">Connexion</a>
+          <a href="login.html" data-auth="login">Connexion</a>
+          <a href="account.html" class="hidden" data-auth="account">Mon compte</a>
+          <button type="button" class="hidden" data-auth="logout">Déconnexion</button>
+          <span class="muted hidden" data-auth="hello"></span>
         </nav>
 
         <button class="cart-btn" type="button">

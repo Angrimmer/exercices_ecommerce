@@ -62,6 +62,3 @@ const params = new URLSearchParams(window.location.search);
 const redirect = params.get("redirect") || "account.html";
 window.location.href = redirect;
 })
-
-
-

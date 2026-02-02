@@ -342,6 +342,8 @@ a { color: inherit; }
 .mini-card__body h3 { margin: 0; font-size: 1rem; }
 .mini-card__body p { margin: 6px 0 0; }
 
+.hidden { display: none !important; }
+
 /* ====== Footer ====== */
 .footer { border-top: 1px solid #e2e8f0; background: white; }
 .footer__inner {

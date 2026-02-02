@@ -278,3 +278,39 @@ if (clearBtn) {
 }
 
 //! Faire fonctionner le panier via popup dans la page produits.
+
+function getCurrentUser() {
+  const raw = localStorage.getItem("currentUser");
+  if (!raw) return null;
+  try { return JSON.parse(raw); } catch { return null; }
+}
+
+function logout() {
+  localStorage.removeItem("currentUser"); // supprime la session 
+  window.location.href = "index.html"; // revient boutique 
+}
+
+function initAuthUI() {
+  const user = getCurrentUser();
+
+  // 1) liens (si tu les as)
+  const linkLogin = document.querySelector('[data-auth="login"]');
+  const linkAccount = document.querySelector('[data-auth="account"]');
+  const btnLogout = document.querySelector('[data-auth="logout"]');
+
+  if (linkLogin) linkLogin.classList.toggle("hidden", !!user);
+  if (linkAccount) linkAccount.classList.toggle("hidden", !user);
+  if (btnLogout) btnLogout.classList.toggle("hidden", !user);
+
+  // 2) action logout
+  if (btnLogout) btnLogout.addEventListener("click", logout);
+
+  // 3) (optionnel) petit label “Bonjour…”
+  const hello = document.querySelector('[data-auth="hello"]');
+  if (hello) {
+    hello.textContent = user ? `Bonjour ${user.firstname} ${user.lastname}` : "";
+    hello.classList.toggle("hidden", !user);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", initAuthUI);

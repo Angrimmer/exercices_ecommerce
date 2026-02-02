@@ -4,31 +4,42 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Mon compte — Fake Boutique</title>
-
-    <!-- CSS global du site -->
     <link rel="stylesheet" href="styles/style.css" />
-    <!-- CSS spécifique account (léger) -->
     <link rel="stylesheet" href="styles/account.css" />
-
+    <script src="auth-ui.js" defer></script>
     <script src="account.js" defer></script>
   </head>
 
   <body>
     <header class="header">
       <div class="container header__inner">
-        <a class="brand" href="index.html">
+        <a class="brand" href="#">
           <span class="brand__logo">🛍️</span>
           <span class="brand__name">Fake Boutique</span>
         </a>
 
         <nav class="nav">
-          <a class="nav__link" href="index.html">Boutique</a>
-          <a class="nav__link is-active" href="account.html">Mon compte</a>
-          <a class="nav__link" href="login.html">Connexion</a>
+          <a href="#" class="nav__link is-active">Shop</a>
+          <a href="#" class="nav__link">Nouveautés</a>
+          <a href="#" class="nav__link">Promos</a>
+          <a href="#" class="nav__link">Contact</a>
+          <a class="nav__link" href="login.html" data-auth="login">Connexion</a>
+          <a class="nav__link hidden" href="account.html" data-auth="account"
+            >Mon compte</a
+          >
+          <button
+            class="nav__link nav__btn hidden"
+            type="button"
+            data-auth="logout"
+          >
+            Déconnexion
+          </button>
+          <span class="muted hidden" data-auth="hello"></span>
         </nav>
 
-        <button class="cart-btn" type="button" disabled>
-          Panier <span class="cart-badge" id="cart-count">0</span>
+        <button class="cart-btn" type="button">
+          Panier
+          <span class="cart-badge">2</span>
         </button>
       </div>
     </header>
@@ -37,11 +48,9 @@
       <section class="shop__top">
         <div>
           <h1 class="title">Mon compte</h1>
-          <p class="subtitle">Gère ton profil et, selon ton rôle, les outils de gestion.</p>
-        </div>
-
-        <div class="account__top-actions">
-          <button class="btn btn--ghost" id="btn-logout" type="button">Déconnexion</button>
+          <p class="subtitle">
+            Gère ton profil et, selon ton rôle, les outils de gestion.
+          </p>
         </div>
       </section>
 
@@ -60,4 +69,64 @@
               <dt>Rôle</dt>
               <dd id="account-role">—</dd>
             </div>
-            <div class="account
+            <div class="account__meta-row">
+              <dt>ID</dt>
+              <dd id="account-id">—</dd>
+            </div>
+          </dl>
+        </section>
+
+        <!-- Outils -->
+        <section class="card account__card">
+          <h2 class="account__h2">Outils</h2>
+          <p class="muted">Selon ton rôle, certains outils s’affichent.</p>
+
+          <section id="admin-panel" class="account__panel hidden">
+            <h3 class="account__h3">Administration</h3>
+            <div class="account__actions">
+              <button
+                class="btn btn--primary"
+                id="btn-add-product"
+                type="button"
+              >
+                Ajouter un produit
+              </button>
+              <button
+                class="btn btn--ghost"
+                id="btn-manage-users"
+                type="button"
+              >
+                Gérer les utilisateurs
+              </button>
+            </div>
+            <p class="muted" id="admin-hint"></p>
+          </section>
+
+          <section id="editor-panel" class="account__panel hidden">
+            <h3 class="account__h3">Édition</h3>
+            <div class="account__actions">
+              <button
+                class="btn btn--primary"
+                id="btn-edit-products"
+                type="button"
+              >
+                Modifier les produits
+              </button>
+            </div>
+            <p class="muted" id="editor-hint"></p>
+          </section>
+
+          <section id="user-panel" class="account__panel hidden">
+            <h3 class="account__h3">Espace client</h3>
+            <div class="account__actions">
+              <a class="btn btn--primary" href="index.html"
+                >Continuer mes achats</a
+              >
+            </div>
+            <p class="muted" id="user-hint"></p>
+          </section>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>
