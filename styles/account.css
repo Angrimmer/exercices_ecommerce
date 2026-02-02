@@ -1,0 +1,102 @@
+/* =========================================================
+   Account page — CSS complémentaire au styles/style.css
+   (Ne pas mettre de reset ici : il est déjà dans style.css)
+   ========================================================= */
+
+/* Utilitaire pour masquer/afficher via JS (classList) */
+.hidden { display: none !important; }
+
+/* Zone principale */
+.account {
+  padding: 22px 0 28px;
+}
+
+/* Actions en haut à droite */
+.account__top-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Grille principale: contenu + panneau latéral */
+.account__grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 18px;
+  align-items: start;
+}
+
+/* Card : tu as déjà .card dans style.css (padding: 1em)
+   Ici on harmonise juste le padding pour cette page */
+.account__card {
+  padding: 16px;
+}
+
+/* Titres */
+.account__h2 {
+  margin: 0 0 10px;
+  font-size: 1.1rem;
+  letter-spacing: -0.02em;
+}
+
+.account__h3 {
+  margin: 0 0 10px;
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+}
+
+/* Bloc meta (dl) */
+.account__meta {
+  margin: 12px 0 0;
+  display: grid;
+  gap: 10px;
+}
+
+.account__meta-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 10px;
+  padding: 10px 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+}
+
+.account__meta-row dt {
+  margin: 0;
+  color: #475569;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.account__meta-row dd {
+  margin: 0;
+  font-weight: 900;
+  color: #0f172a;
+  word-break: break-word;
+}
+
+/* Panel rôles (admin/editor/user) */
+.account__panel {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid #e2e8f0;
+}
+
+/* Boutons de panel */
+.account__actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+/* Note bas de carte */
+.account__note {
+  margin: 14px 0 0;
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .account__grid { grid-template-columns: 1fr; }
+  .account__actions { grid-template-columns: 1fr; }
+}

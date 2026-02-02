@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mon compte — Fake Boutique</title>
+
+    <!-- CSS global du site -->
+    <link rel="stylesheet" href="styles/style.css" />
+    <!-- CSS spécifique account (léger) -->
+    <link rel="stylesheet" href="styles/account.css" />
+
+    <script src="account.js" defer></script>
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container header__inner">
+        <a class="brand" href="index.html">
+          <span class="brand__logo">🛍️</span>
+          <span class="brand__name">Fake Boutique</span>
+        </a>
+
+        <nav class="nav">
+          <a class="nav__link" href="index.html">Boutique</a>
+          <a class="nav__link is-active" href="account.html">Mon compte</a>
+          <a class="nav__link" href="login.html">Connexion</a>
+        </nav>
+
+        <button class="cart-btn" type="button" disabled>
+          Panier <span class="cart-badge" id="cart-count">0</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="container account">
+      <section class="shop__top">
+        <div>
+          <h1 class="title">Mon compte</h1>
+          <p class="subtitle">Gère ton profil et, selon ton rôle, les outils de gestion.</p>
+        </div>
+
+        <div class="account__top-actions">
+          <button class="btn btn--ghost" id="btn-logout" type="button">Déconnexion</button>
+        </div>
+      </section>
+
+      <section class="account__grid">
+        <!-- Profil -->
+        <section class="card account__card">
+          <h2 class="account__h2">Profil</h2>
+          <p class="muted" id="hello">—</p>
+
+          <dl class="account__meta">
+            <div class="account__meta-row">
+              <dt>Email</dt>
+              <dd id="account-email">—</dd>
+            </div>
+            <div class="account__meta-row">
+              <dt>Rôle</dt>
+              <dd id="account-role">—</dd>
+            </div>
+            <div class="account

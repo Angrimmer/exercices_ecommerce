@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Connexion — Fake Boutique</title>
+    <link rel="stylesheet" href="styles/login.css" />
+    <script src="login.js" defer></script>
+  </head>
+
+  <body>
+    <main class="auth">
+      <a class="link" href="index.html">← Retour à la boutique</a>
+      <div class="auth__card">
+        <div class="auth__header">
+          <div class="logo">🛍️</div>
+          <h1 class="title">Connexion</h1>
+          <p class="subtitle">Accède à ton espace Fake Boutique</p>
+        </div>
+
+        <form id="login-form" class="form" autocomplete="off">
+          <label class="field">
+            <span class="field__label">Email</span>
+            <input
+              type="email"
+              name="email"
+              class="input"
+              placeholder="admin@fakeboutique.com"
+              required
+            />
+          </label>
+
+          <label class="field">
+            <span class="field__label">Mot de passe</span>
+            <input
+              type="password"
+              name="password"
+              class="input"
+              placeholder="••••••••"
+              required
+            />
+          </label>
+
+          <button class="btn btn--primary" type="submit">Se connecter</button>
+        </form>
+        <p id="login-error" class="muted" style="display:none;"></p>
+        <div class="divider">
+          <span>Comptes de test</span>
+        </div>
+
+        <ul class="accounts">
+          <li><strong>Admin</strong> — admin@fakeboutique.com / admin123</li>
+          <li><strong>Editor</strong> — editor@fakeboutique.com / editor123</li>
+          <li><strong>User</strong> — user@fakeboutique.com / user123</li>
+        </ul>
+      </div>
+    </main>
+  </body>
+</html>
