@@ -6,20 +6,20 @@
     <title>Mon compte — Fake Boutique</title>
     <link rel="stylesheet" href="styles/style.css" />
     <link rel="stylesheet" href="styles/account.css" />
-    <script src="auth-ui.js" defer></script>
-    <script src="account.js" defer></script>
+    <script src="/javascript/auth-ui.js" defer></script>
+    <script src="/javascript/account.js" defer></script>
   </head>
 
   <body>
     <header class="header">
       <div class="container header__inner">
-        <a class="brand" href="#">
+        <a class="brand" href="index.html">
           <span class="brand__logo">🛍️</span>
           <span class="brand__name">Fake Boutique</span>
         </a>
 
         <nav class="nav">
-          <a href="#" class="nav__link is-active">Shop</a>
+          <a href="index.html" class="nav__link is-active">Shop</a>
           <a href="#" class="nav__link">Nouveautés</a>
           <a href="#" class="nav__link">Promos</a>
           <a href="#" class="nav__link">Contact</a>
@@ -30,9 +30,7 @@
           <button
             class="nav__link nav__btn hidden"
             type="button"
-            data-auth="logout"
-          >
-            Déconnexion
+            data-auth="logout">Déconnexion
           </button>
           <span class="muted hidden" data-auth="hello"></span>
         </nav>

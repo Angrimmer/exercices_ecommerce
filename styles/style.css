@@ -60,6 +60,11 @@ img { max-width: 100%; display: block; }
 .nav__link:hover { background: #eef2ff; }
 .nav__link.is-active { background: #e0e7ff; color: #1e3a8a; }
 
+.nav__btn {
+  background: transparent;
+  border: 0;
+}
+
 .cart-btn {
   position: relative;
   border: 1px solid #e2e8f0;

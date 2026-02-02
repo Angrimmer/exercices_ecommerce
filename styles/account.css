@@ -1,8 +1,3 @@
-/* =========================================================
-   Account page — CSS complémentaire au styles/style.css
-   (Ne pas mettre de reset ici : il est déjà dans style.css)
-   ========================================================= */
-
 /* Utilitaire pour masquer/afficher via JS (classList) */
 .hidden { display: none !important; }
 
@@ -32,8 +27,6 @@
   align-items: start;
 }
 
-/* Card : tu as déjà .card dans style.css (padding: 1em)
-   Ici on harmonise juste le padding pour cette page */
 .account__card {
   padding: 16px;
 }

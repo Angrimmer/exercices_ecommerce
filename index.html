@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Fake Boutique</title>
     <link rel="stylesheet" href="styles/style.css" />
-    <script src="script.js" defer></script>
-    <script src="auth-ui.js" defer></script>
+    <script src="/javascript/script.js" defer></script>
+    <script src="/javascript/auth-ui.js" defer></script>
 
   </head>
   <body>
@@ -34,6 +34,14 @@
           <span class="cart-badge">2</span>
         </button>
       </div>
+       <button
+            class="nav__link nav__btn hidden"
+            type="button"
+            data-auth="logout"
+          >
+            Déconnexion
+          </button>
+          <span class="muted hidden" data-auth="hello"></span>
     </header>
 
     <!-- Main -->
